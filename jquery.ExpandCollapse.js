@@ -1,6 +1,6 @@
 /**
-* Expand/Collapse - A jQuery plugin
-* Description: This plugin creates expandable and collapsable content areas
+* Expand/Collapse - jQuery plugin
+* Description: A plugin for expanding/collapsing single elements or groups of related elements
 * Author: Kellan Craddock
 * Email: kellancraddock@gmail.com
 */
