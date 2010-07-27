@@ -1,1 +1,0 @@
-Initial Build of he Expand Collapse jQuery Plugin
