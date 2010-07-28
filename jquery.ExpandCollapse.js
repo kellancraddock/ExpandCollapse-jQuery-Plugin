@@ -38,7 +38,9 @@
 			trigger: '.header',
 			toggle: $(),
 			content: '.body',
-			defaultState: 'collapsed'
+			defaultState: 'collapsed',
+			onOpen: function() {},
+			onClose: function() {}
 		}
 		
 		//Initialize 
@@ -78,12 +80,14 @@
 	    this.close = function() {
 	    	$(self.options.content, self.container).slideUp();
 	    	self.container.removeClass('expanded').addClass('collapsed');
+	    	self.options.onClose();
 	    }
     
 	    //Public method to open an individual container
 	   this.open = function() {
 	    	$(self.options.content, self.container).slideDown();
 	    	self.container.removeClass('collapsed').addClass('expanded');
+	    	self.options.onOpen();
 	    }
 	    
 	    //Set plugin instance to data
