@@ -50,21 +50,19 @@
 			//Extend the default options obj
 			self.options = $.extend({}, self.defaults, options);
 			
-			
 			//Set up default states
 			if (self.options.defaultState == 'collapsed') {
-				container.not($('.expanded')).addClass('collapsed').children(self.options.content).hide();
+				container.not($('.expanded')).addClass('collapsed').hide();
 			} else if (self.options.defaultState == 'expanded') {
-				container.not($('.collapsed')).addClass('expanded').children(self.options.content).show();
-				if (container.hasClass('collapsed')) { container.children(self.options.content).hide(); }
+				container.not($('.collapsed')).addClass('expanded').show();
+				if (container.hasClass('collapsed')) { container.hide(); }
 			}
 			
 			//Bind click on single element
-			$(self.options.trigger, self.container).live('click', function() {
+			$(self.options.trigger).bind('click', function(e) {
+				e.preventDefault();
 	    		self.change();
-				return false;
 	    	});
-	    		
 		}
 		
 		//Public method for toggling between expanded and collapsed states
@@ -78,14 +76,14 @@
 		
 		//Public method to close an individual container
 	    this.close = function() {
-	    	$(self.options.content, self.container).slideUp();
+	    	$(self.container).slideUp('fast');
 	    	self.container.removeClass('expanded').addClass('collapsed');
 	    	self.options.onClose();
 	    }
     
 	    //Public method to open an individual container
 	   this.open = function() {
-	    	$(self.options.content, self.container).slideDown();
+	    	$(self.container).slideDown('fast');
 	    	self.container.removeClass('collapsed').addClass('expanded');
 	    	self.options.onOpen();
 	    }
