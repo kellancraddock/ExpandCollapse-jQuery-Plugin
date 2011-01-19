@@ -35,7 +35,7 @@
 		
 		//Default options
 		this.defaults = {
-			trigger: '.header',
+			trigger: '',
 			toggle: $(),
 			content: '.body',
 			defaultState: 'collapsed',
@@ -78,6 +78,7 @@
 	    this.close = function() {
 	    	$(self.container).slideUp('fast');
 	    	self.container.removeClass('expanded').addClass('collapsed');
+	    	self.options.trigger.removeClass('expanded').addClass('collapsed');
 	    	self.options.onClose();
 	    }
     
@@ -85,6 +86,7 @@
 	   this.open = function() {
 	    	$(self.container).slideDown('fast');
 	    	self.container.removeClass('collapsed').addClass('expanded');
+	    	self.options.trigger.removeClass('collapsed').addClass('expanded');
 	    	self.options.onOpen();
 	    }
 	    
